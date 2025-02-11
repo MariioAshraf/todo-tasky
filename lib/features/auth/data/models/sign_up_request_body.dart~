@@ -1,0 +1,28 @@
+class SignUpRequestBody {
+  SignUpRequestBody({
+      this.id, 
+      this.displayName, 
+      this.accessToken, 
+      this.refreshToken,});
+
+  SignUpRequestBody.fromJson(dynamic json) {
+    id = json['_id'];
+    displayName = json['displayName'];
+    accessToken = json['access_token'];
+    refreshToken = json['refresh_token'];
+  }
+  String? id;
+  String? displayName;
+  String? accessToken;
+  String? refreshToken;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['_id'] = id;
+    map['displayName'] = displayName;
+    map['access_token'] = accessToken;
+    map['refresh_token'] = refreshToken;
+    return map;
+  }
+
+}

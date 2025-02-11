@@ -1,0 +1,7 @@
+
+class LoginRequestBody {
+  String phone;
+  String password;
+  LoginRequestBody({required this.phone, required this.password});
+ 
+}
