@@ -37,7 +37,9 @@ class _HomeViewState extends State<HomeView> {
           backgroundColor: AppColorsManager.lightPurple,
           child: IconButton(
             color: AppColorsManager.mainPurple,
-            onPressed: () {},
+            onPressed: () {
+              context.pushNamed(Routes.qrScanner);
+            },
             icon: Icon(
               Icons.qr_code_2,
             ),

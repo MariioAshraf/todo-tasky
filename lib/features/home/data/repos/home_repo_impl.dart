@@ -63,10 +63,11 @@ class HomeRepoImpl implements HomeRepo {
   }
 
   @override
-  Future<Either<Failures, void>> getTask(String taskId) async {
+  Future<Either<Failures, TaskModel>> getTask(String taskId) async {
     try {
-      await apiService.getTask(endPoint: 'todos/$taskId', taskId: taskId);
-      return right(null);
+      final task =
+          await apiService.getTask(endPoint: 'todos/$taskId');
+      return right(TaskModel.fromJson(task));
     } catch (e) {
       if (e is DioException) {
         return Left(ServerFailure.fromDioException(e));

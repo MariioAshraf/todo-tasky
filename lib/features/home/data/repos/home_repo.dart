@@ -12,5 +12,5 @@ abstract class HomeRepo {
 
   Future<Either<Failures, void>> createTask(CreateTaskInputBodyModel task);
 
-  Future<Either<Failures, void>> getTask(String taskId);
+  Future<Either<Failures, TaskModel>> getTask(String taskId);
 }

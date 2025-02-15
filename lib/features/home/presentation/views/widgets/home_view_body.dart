@@ -24,9 +24,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
   }
 
   Future<void> _initializeData() async {
-    final loginCubit = LoginCubit.get(context);
     homeCubit = HomeCubit.get(context);
-    await loginCubit.getUserId();
     await homeCubit.getTasks(1);
   }
 

@@ -68,12 +68,12 @@ class HomeCubit extends Cubit<HomeState> {
     });
   }
 
-  // Future<void> getTask(String taskId) async {
-  //   emit(GetTaskLoading());
-  //   var result = await homeRepo.getTask(taskId);
-  //   result.fold(
-  //       (l) => emit(GetTaskFailure(l.errMsg)), (r) => emit(GetTaskSuccess()));
-  // }
+  Future<void> getTask(String taskId) async {
+    emit(GetTaskLoading());
+    var result = await homeRepo.getTask(taskId);
+    result.fold(
+        (l) => emit(GetTaskFailure(l.errMsg)), (r) => emit(GetTaskSuccess(r)));
+  }
 
   File? taskImage;
 

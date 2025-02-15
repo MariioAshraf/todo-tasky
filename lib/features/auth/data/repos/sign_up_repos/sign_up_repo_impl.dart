@@ -20,7 +20,7 @@ class SignUpRepoImpl implements SignUpRepo {
       return Right(SignUpResponseBody.fromJson(response));
     } catch (e) {
       if (e is DioException) {
-        return left(ServerFailure.fromDioException(e));
+        return Left(ServerFailure.fromDioException(e));
       }
       return Left(ServerFailure(e.toString()));
     }

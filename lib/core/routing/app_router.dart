@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_tasky/core/routing/routes.dart';
 import 'package:todo_tasky/features/home/presentation/views/task_details_view.dart';
 import 'package:todo_tasky/features/home/presentation/views/create_task_view.dart';
@@ -7,10 +6,8 @@ import 'package:todo_tasky/features/splash/splash_view.dart';
 import '../../features/auth/presentation/views/login_view.dart';
 import '../../features/auth/presentation/views/sign_up_view.dart';
 import '../../features/home/data/models/task_model.dart';
-import '../../features/home/data/repos/home_repo_impl.dart';
-import '../../features/home/presentation/manager/home_cubit.dart';
 import '../../features/home/presentation/views/home_view.dart';
-import '../di/dependency_injection.dart';
+import '../../features/home/presentation/views/qr_scanner_view.dart';
 
 class AppRouter {
   Route? generateRoute(RouteSettings settings) {
@@ -33,6 +30,10 @@ class AppRouter {
       case Routes.signUpView:
         return MaterialPageRoute(
           builder: (_) => const SignUpView(),
+        );
+      case Routes.qrScanner:
+        return MaterialPageRoute(
+          builder: (_) => const QRScannerView(),
         );
       case Routes.splashView:
         return MaterialPageRoute(

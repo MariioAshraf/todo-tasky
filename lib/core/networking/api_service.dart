@@ -95,10 +95,12 @@ class ApiService {
     return response.data;
   }
 
-  Future<void> getTask(
-      {required String endPoint, required String taskId}) async {
-    await _dio.get(
+  Future<Map<String, dynamic>> getTask({
+    required String endPoint,
+  }) async {
+    var response = await _dio.get(
       '$_baseUrl$endPoint',
     );
+    return response.data;
   }
 }

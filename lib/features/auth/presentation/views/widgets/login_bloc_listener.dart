@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_tasky/core/widgets/build_dialogs.dart';
 import 'package:todo_tasky/core/utils/extensions.dart';
 import '../../../../../core/routing/routes.dart';
-import '../../../../../core/theming/app_colors.dart';
 import '../../manager/login_cubit/login_cubit.dart';
 
 class LoginBlocListener extends StatelessWidget {

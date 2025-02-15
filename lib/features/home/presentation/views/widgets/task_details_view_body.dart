@@ -1,18 +1,15 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:todo_tasky/core/utils/extensions.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 import 'package:todo_tasky/core/utils/spacing.dart';
-import 'package:todo_tasky/core/widgets/build_dialogs.dart';
 import 'package:todo_tasky/features/auth/presentation/manager/login_cubit/login_cubit.dart';
 import 'package:todo_tasky/features/home/presentation/views/widgets/edit_task_priority.dart';
 import 'package:todo_tasky/features/home/presentation/views/widgets/title_and_sub_title_column.dart';
 import '../../../data/models/task_model.dart';
 import '../../manager/home_cubit.dart';
 import 'edit_task_bloc_listener.dart';
-import 'edit_task_button.dart';
+import 'save_task_button.dart';
 import 'edit_task_image.dart';
 import 'edit_task_status_container.dart';
 import 'end_date_container.dart';
@@ -47,7 +44,7 @@ class _TaskDetailsViewBodyState extends State<TaskDetailsViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    final String userId = LoginCubit.get(context).userId;
+    final String userId = LoginCubit.get(context).userId!;
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: 16.w,
@@ -79,9 +76,19 @@ class _TaskDetailsViewBodyState extends State<TaskDetailsViewBody> {
               priority: widget.task.priority,
             ),
             verticalSpacing(20),
-            EditTaskButton(
+            SaveTaskButton(
               taskId: widget.task.id,
               userId: userId,
+            ),
+            SizedBox(
+              width: double.infinity,
+              child: FittedBox(
+                child: QrImageView(
+                  data: widget.task.id,
+                  version: QrVersions.auto,
+                  size: 200.0,
+                ),
+              ),
             ),
           ],
         ),

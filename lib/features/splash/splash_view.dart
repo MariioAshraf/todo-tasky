@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo_tasky/core/theming/app_colors.dart';
 import 'package:todo_tasky/core/utils/assets.dart';
+import 'package:todo_tasky/features/auth/presentation/manager/login_cubit/login_cubit.dart';
 import '../../core/routing/routes.dart';
 import '../../core/utils/shared_prefs_token_manager.dart';
 
@@ -20,6 +21,7 @@ class _SplashViewState extends State<SplashView> {
   }
 
   Future<void> _navigateBasedOnToken() async {
+    final String? userId = await LoginCubit.get(context).getUserId();
     await Future.delayed(const Duration(seconds: 2));
 
     final accessToken = await TokenManager.getAccessToken();
@@ -27,7 +29,7 @@ class _SplashViewState extends State<SplashView> {
 
     if (accessToken != null && refreshToken != null) {
       final isTokenValid = await TokenManager.refreshAccessToken();
-      if (isTokenValid) {
+      if (isTokenValid && userId != null) {
         if (mounted) {
           Navigator.pushReplacementNamed(context, Routes.homeView);
         }

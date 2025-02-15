@@ -5,4 +5,5 @@ class Routes {
   static const String splashView = '/splashView';
   static const String createTaskView = '/createTaskView';
   static const String taskDetailsView = '/taskDetailsView';
+  static const String qrScanner = '/qrScanner';
 }

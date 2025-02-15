@@ -69,7 +69,11 @@ final class ImagePickedFailure extends HomeState {
 
 final class NoMoreTasks extends HomeState {}
 
-final class GetTaskSuccess extends HomeState {}
+final class GetTaskSuccess extends HomeState {
+  final TaskModel task;
+
+  GetTaskSuccess(this.task);
+}
 
 final class GetTaskFailure extends HomeState {
   final String errMsg;

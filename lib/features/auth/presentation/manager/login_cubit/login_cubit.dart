@@ -9,7 +9,7 @@ part 'login_state.dart';
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit(this.loginRepo) : super(LoginInitial());
 
-  late String userId;
+  String? userId;
 
   static LoginCubit get(context) => BlocProvider.of(context);
   final LoginRepo loginRepo;
@@ -26,7 +26,6 @@ class LoginCubit extends Cubit<LoginState> {
     final result = await loginRepo.login(loginRequestBody);
     result.fold((l) => emit(LoginFailure(l.errMsg)), (r) async {
       await saveUserId(r.id!);
-      print('user id saved ============== $userId');
       emit(LoginSuccess());
     });
   }
@@ -37,8 +36,8 @@ class LoginCubit extends Cubit<LoginState> {
     return userId = uId;
   }
 
-  Future<String> getUserId() async {
+  Future<String?> getUserId() async {
     final prefs = await SharedPreferences.getInstance();
-    return userId = prefs.getString('userId')!;
+    return userId = prefs.getString('userId');
   }
 }

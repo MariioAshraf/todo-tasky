@@ -1,4 +1,3 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,8 +27,10 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       child: MultiBlocProvider(
         providers: [
-          BlocProvider(create: (context) => LoginCubit(gitIt.get<LoginRepoImpl>())),
-          BlocProvider(create: (context) => HomeCubit(gitIt.get<HomeRepoImpl>()))
+          BlocProvider(
+              create: (context) => LoginCubit(gitIt.get<LoginRepoImpl>())),
+          BlocProvider(
+              create: (context) => HomeCubit(gitIt.get<HomeRepoImpl>()))
         ],
         child: MaterialApp(
           initialRoute: Routes.splashView,

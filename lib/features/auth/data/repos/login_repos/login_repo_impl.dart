@@ -1,13 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-
 import 'package:todo_tasky/core/failures/failures.dart';
 import 'package:todo_tasky/core/networking/api_service.dart';
-
 import 'package:todo_tasky/features/auth/data/models/login_models/login_response_body.dart';
-
 import 'package:todo_tasky/features/auth/data/models/login_models/login_request_body.dart';
-
 import 'login_repo.dart';
 
 class LoginRepoImpl implements LoginRepo {
@@ -23,13 +19,12 @@ class LoginRepoImpl implements LoginRepo {
         endPoint: 'auth/login',
         loginRequestBody: loginRequestBody,
       );
-      return Right(LoginResponseBody.fromJson(response));
+      return right(LoginResponseBody.fromJson(response));
     } catch (e) {
       if (e is DioException) {
-        print('===================================================');
         return left(ServerFailure.fromDioException(e));
       }
-      return Left(ServerFailure(e.toString()));
+      return left(ServerFailure(e.toString()));
     }
   }
 }

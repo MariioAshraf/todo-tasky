@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo_tasky/core/theming/app_colors.dart';
 import 'package:todo_tasky/features/home/presentation/manager/home_cubit.dart';
 
-class EditTaskButton extends StatelessWidget {
-  const EditTaskButton({
+class SaveTaskButton extends StatelessWidget {
+  const SaveTaskButton({
     super.key,
     required this.taskId,
     required this.userId,
@@ -38,7 +38,7 @@ class EditTaskButton extends StatelessWidget {
           );
         },
         child: const Text(
-          'Edit Task',
+          'Save Task',
           style: TextStyle(
               color: Colors.white, fontSize: 16, fontWeight: FontWeight.w600),
         ),

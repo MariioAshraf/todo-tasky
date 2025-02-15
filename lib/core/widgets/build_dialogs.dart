@@ -3,7 +3,7 @@ import 'package:todo_tasky/core/utils/extensions.dart';
 import '../theming/app_colors.dart';
 import '../theming/app_styles.dart';
 
-Future<dynamic> buildFailureDialog(BuildContext context, String errMsg) {
+ buildFailureDialog(BuildContext context, String errMsg) {
   return showDialog(
     context: context,
     builder: (context) => AlertDialog(
